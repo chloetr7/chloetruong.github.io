@@ -1,0 +1,1 @@
+WITH forecasts AS (SELECT month, net_sales_gbp AS actual, lag(net_sales_gbp, 12) OVER (ORDER BY month) AS forecast FROM observations) SELECT count(*) AS months_tested, round(100.0 * sum(abs(actual - forecast)) / sum(actual), 2) AS wape_pct FROM forecasts WHERE forecast IS NOT NULL;

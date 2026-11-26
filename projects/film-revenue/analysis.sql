@@ -1,0 +1,1 @@
+SELECT genre, median_usd_millions, round(1.0 * median_usd_millions / (SELECT median_usd_millions FROM observations WHERE genre='Comedy'),2) AS multiple_of_comedy FROM observations ORDER BY median_usd_millions DESC;
